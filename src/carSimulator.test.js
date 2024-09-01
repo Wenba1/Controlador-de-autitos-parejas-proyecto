@@ -1,4 +1,4 @@
-import { obtenerPosicionInicial,obtenerOrientacion,manejarAuto } from "./carSimulator.js";
+import { obtenerPosicionInicial,obtenerOrientacion,manejarAuto, girarAuto } from "./carSimulator.js";
 
 describe("Simulador de Carrito", () => {
     //Mostrar Posicion Inicial
@@ -21,16 +21,30 @@ describe("Simulador de Carrito", () => {
     expect(obtenerOrientacion("S")).toEqual(resultado);
   });
 
-  //Manejar a la izquierda
-  it("Maneja auto a la izquierda", () => {
-    const resultado = [0,0];
-    expect(manejarAuto("I")).toEqual(resultado);
+  //Manejar a la izquierda con orientacion al Norte
+  it("Girar auto a la izquierda", () => {
+    const resultado = "O";
+    expect(girarAuto("I","N")).toEqual(resultado);
   });
-
-  //Manejar a la derecha
-  it("Maneja auto a la derecha", () => {
-    const resultado = [2,0];
-    expect(manejarAuto("D")).toEqual(resultado);
+  //Manejar a la derecha con orientacion al Norte
+  it("Girar auto a la derecha", () => {
+    const resultado = "E";
+    expect(girarAuto("D","N")).toEqual(resultado);
+  });
+  //Manejar a la izquierda con orientacion al Este
+  it("Girar auto a la izquierda", () => {
+    const resultado = "N";
+    expect(girarAuto("I","E")).toEqual(resultado);
+  });
+  //Manejar a la derecha con orientacion al Este
+  it("Girar auto a la derecha", () => {
+    const resultado = "S";
+    expect(girarAuto("D","E")).toEqual(resultado);
+  });
+  //Avanza
+  it("Maneja el auto hacia adelante", () => {
+    const resultado = [1,2];
+    expect(manejarAuto("A","N")).toEqual(resultado);
   });
 
 });
