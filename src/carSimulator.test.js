@@ -31,7 +31,7 @@ describe("Simulador de Carrito", () => {
     const resultado = "E";
     expect(girarAuto("D","N")).toEqual(resultado);
   });
-  
+
   //Girar a la izquierda con orientacion al Este
   it("Girar auto a la izquierda", () => {
     const resultado = "N";
@@ -64,6 +64,8 @@ describe("Simulador de Carrito", () => {
     const resultado = "O";
     expect(girarAuto("D","S")).toEqual(resultado);
   });
+
+
   //Manejar el auto hacia el Este 
   it("Maneja el auto hacia adelante al Este", () => {
     const resultado = [2,1];
@@ -74,5 +76,9 @@ describe("Simulador de Carrito", () => {
     const resultado = [1,2];
     expect(manejarAuto("A","N")).toEqual(resultado);
   });
-
+  //Manejar el auto hacia el Oeste 
+  it("Maneja el auto hacia adelante al Oeste", () => {
+    const resultado = [0,1];
+    expect(manejarAuto("A","O")).toEqual(resultado);
+  });
 });
