@@ -21,36 +21,50 @@ describe("Simulador de Carrito", () => {
     expect(obtenerOrientacion("S")).toEqual(resultado);
   });
 
-  //Manejar a la izquierda con orientacion al Norte
+  //Girar a la izquierda con orientacion al Norte
   it("Girar auto a la izquierda", () => {
     const resultado = "O";
     expect(girarAuto("I","N")).toEqual(resultado);
   });
-  //Manejar a la derecha con orientacion al Norte
+  //Girar a la derecha con orientacion al Norte
   it("Girar auto a la derecha", () => {
     const resultado = "E";
     expect(girarAuto("D","N")).toEqual(resultado);
   });
-  //Manejar a la izquierda con orientacion al Este
+  
+  //Girar a la izquierda con orientacion al Este
   it("Girar auto a la izquierda", () => {
     const resultado = "N";
     expect(girarAuto("I","E")).toEqual(resultado);
   });
-  //Manejar a la derecha con orientacion al Este
+  //Girar a la derecha con orientacion al Este
   it("Girar auto a la derecha", () => {
     const resultado = "S";
     expect(girarAuto("D","E")).toEqual(resultado);
   });
-  //Manejar a la izquierda con orientacion al Oeste
+
+  //Girar a la izquierda con orientacion al Oeste
   it("Girar auto a la izquierda", () => {
     const resultado = "S";
-    expect(girarAuto("D","O")).toEqual(resultado);
+    expect(girarAuto("I","O")).toEqual(resultado);
   });
-  //Manejar a la derecha con orientacion al Oeste
+  //Girar a la derecha con orientacion al Oeste
   it("Girar auto a la derecha", () => {
     const resultado = "N";
     expect(girarAuto("D","O")).toEqual(resultado);
   });
+
+  //Girar a la izquierda con orientacion al Sur
+  it("Girar auto a la izquierda", () => {
+    const resultado = "E";
+    expect(girarAuto("I","S")).toEqual(resultado);
+  });
+  //Girar a la derecha con orientacion al Sur
+  it("Girar auto a la derecha", () => {
+    const resultado = "O";
+    expect(girarAuto("D","S")).toEqual(resultado);
+  });
+
   //Avanza
   it("Maneja el auto hacia adelante", () => {
     const resultado = [1,2];
