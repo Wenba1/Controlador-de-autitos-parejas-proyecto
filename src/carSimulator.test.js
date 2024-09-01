@@ -1,5 +1,4 @@
-import { resolvePreset } from "@babel/core";
-import { obtenerPosicionInicial,obtenerOrientacion } from "./carSimulator.js";
+import { obtenerPosicionInicial,obtenerOrientacion,manejarAuto } from "./carSimulator.js";
 
 describe("Simulador de Carrito", () => {
     //Mostrar Posicion Inicial
@@ -20,6 +19,12 @@ describe("Simulador de Carrito", () => {
   it("Muestra orientacion del Auto", () => {
     const resultado = "S"
     expect(obtenerOrientacion("S")).toEqual(resultado);
+  });
+
+  //Manejar a la izquierda
+  it("Maneja auto a la izquierda", () => {
+    const resultado = [0,0];
+    expect(manejarAuto()).toEqual(resultado);
   });
 
 });
