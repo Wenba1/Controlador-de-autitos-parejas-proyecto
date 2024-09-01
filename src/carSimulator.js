@@ -3,6 +3,7 @@ export function obtenerPosicionInicial(x,y){
     return Posicion;
 }
 
-export function obtenerOrientacion(){
-    return "N"
+export function obtenerOrientacion(orientacion){
+    return orientacion
+    
 }
