@@ -81,4 +81,9 @@ describe("Simulador de Carrito", () => {
     const resultado = [0,1];
     expect(manejarAuto("A","O")).toEqual(resultado);
   });
+  //Manejar el auto hacia al Sur
+  it("Maneja el auto hacia adelante al Sur", () => {
+    const resultado = [1,0];
+    expect(manejarAuto("A","S")).toEqual(resultado);
+  });
 });
