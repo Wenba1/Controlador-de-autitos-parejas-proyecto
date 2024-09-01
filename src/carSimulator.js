@@ -1,4 +1,4 @@
-export function obtenerPosicionInicial(){
-    const Posicion = [0,0]
+export function obtenerPosicionInicial(x,y){
+    const Posicion = [x,y]
     return Posicion;
 }
