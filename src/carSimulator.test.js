@@ -24,7 +24,13 @@ describe("Simulador de Carrito", () => {
   //Manejar a la izquierda
   it("Maneja auto a la izquierda", () => {
     const resultado = [0,0];
-    expect(manejarAuto()).toEqual(resultado);
+    expect(manejarAuto("I")).toEqual(resultado);
+  });
+
+  //Manejar a la derecha
+  it("Maneja auto a la derecha", () => {
+    const resultado = [2,0];
+    expect(manejarAuto("D")).toEqual(resultado);
   });
 
 });
