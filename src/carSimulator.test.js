@@ -1,12 +1,24 @@
-import { obtenerPosicionInicial } from "./carSimulator.js";
+import { obtenerPosicionInicial,obtenerOrientacion } from "./carSimulator.js";
 
 describe("Simulador de Carrito", () => {
-  it("deberia mostrar la posicion inicial", () => {
+    //Mostrar Posicion Inicial
+  it("Muestra posicion inicial para 0x y 0y", () => {
     const resultado = [0,0]
     expect(obtenerPosicionInicial(0,0)).toEqual(resultado);
   });
-  it("deberia mostrar la posicion inicial desde 15,30", () => {
-    var resultado=[15,30]
+  it("Muestra posicion inicial", () => {
+    var resultado = [15,30]
     expect(obtenerPosicionInicial(15,30)).toEqual(resultado);
   });
+
+  //Mostrar Orientacion
+  it("Muestra orientacion para N", () => {
+    const resultado = "N";
+    expect(obtenerOrientacion()).toEqual("N");
+  });
+  /*it("Muestra orientacion del Auto", () => {
+    const resultado = "S"
+    expect(obtenerOrientacion("S")).toEqual(resultado);
+  });*/
+
 });
