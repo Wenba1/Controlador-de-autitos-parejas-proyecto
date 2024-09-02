@@ -82,10 +82,18 @@ describe("Simulador de Carrito", () => {
     expect(manejarAuto("A", "S", [1, 1])).toEqual(resultado);
   });
 
-  // Controlar al auto por comandos
-  it("Maneja el auto con Comandos del Ejemplo 1", () => {
+
+   // Controlar al auto por comandos EJ 1
+   it("Maneja el auto con Comandos del Ejemplo 1", () => {
     const comandos = "IAIAIAIAA";
     const resultado = { Posicion: [1, 3], orientacion: "N" };
-    expect(manejarAutoxComandos(comandos, "N")).toEqual(resultado);
+    expect(manejarAutoxComandos(comandos, "N",[1,2])).toEqual(resultado);
+  });
+
+   // Controlar al auto por comandos EJ 2
+   it("Maneja el auto con Comandos del Ejemplo 2", () => {
+    const comandos = "AADAADADDA";
+    const resultado = { Posicion: [5, 1], orientacion: "E" };
+    expect(manejarAutoxComandos(comandos, "E",[3,3])).toEqual(resultado);
   });
 });

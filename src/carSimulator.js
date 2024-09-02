@@ -65,8 +65,8 @@ export function manejarAuto(direccion, orientacion_inicial, posicion_inicial){
     return { Posicion, orientacion }; // Retorna la posición y la nueva orientación
 }
 
-export function manejarAutoxComandos(comandos, orientacion_inicial){ //IAIAIAIAA
-    let Posicion = obtenerPosicionInicial(1, 2);
+export function manejarAutoxComandos(comandos, orientacion_inicial, posicion_inicial){ //IAIAIAIAA
+    let Posicion = posicion_inicial.slice() //
     let orientacion = orientacion_inicial;
 
     for(let i = 0; i < comandos.length; i++){
