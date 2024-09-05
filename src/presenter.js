@@ -1,15 +1,28 @@
-import { obtenerPosicionInicial } from "./carSimulator.js";  // Importar la función desde carSimulator.js
+import { manejarAutoxComandos, obtenerOrientacion, obtenerPosicionInicial } from "./carSimulator.js";
 
-const input = document.querySelector("#comandos"); // Asumiendo un input con id 'comandos' para los comandos
-const form = document.querySelector("#simulador-form"); // Formulario para enviar comandos
-const divPosInicial = document.querySelector("#posicion-inicial-div"); // Div para mostrar la posición inicial
-const divPosFinal = document.querySelector("#posicion-final-div");
+const comandos_input = document.querySelector("#comandos");
+const form = document.querySelector("#simulador-form");
+const divPosInicial = document.querySelector("#posicioninicial-div");
+const divComandos = document.querySelector("#comandos-div");
+const divPosFinal = document.querySelector("#posicionfinal-div");
 
 form.addEventListener("submit", (event) => {
-  event.preventDefault();
+    event.preventDefault();
+    const comandosInput = comandos_input.value.split('/');
+    const campo = comandosInput[0].split(',').map(Number); // Ahora obtenemos el campo como un arreglo de números [maxX, maxY]
+    const posicionInicialYorientacion = comandosInput[1];
+    const comandos = comandosInput[2];
 
-  const comandos = input.value; // Obtener el valor de los comandos ingresados
-  const posicionInicial = obtenerPosicionInicial(comandos); // Obtener la posición inicial del auto
+    // Extraer posición y orientación inicial
+    const posicionXY = posicionInicialYorientacion.match(/\d+,\d+/)[0].split(',').map(Number);
+    const orientacionInicial = obtenerOrientacion(posicionInicialYorientacion.slice(-1));
 
-  divPosInicial.innerHTML = "<p>Posición Inicial: " + posicionInicial + "</p>"; // Mostrar la posición inicial
+    // Manejar los comandos
+    const resultado = manejarAutoxComandos(comandos, orientacionInicial, posicionXY, campo);
+    const posicionFinal = resultado.Posicion;
+    const orientacionFinal = resultado.orientacion;
+
+    divPosInicial.innerHTML = `<p>Posición Inicial: ${posicionXY[0]},${posicionXY[1]}${orientacionInicial}</p>`;
+    divComandos.innerHTML = `<p>Comandos: ${comandos}</p>`;
+    divPosFinal.innerHTML = `<p>Posición Final: ${posicionFinal[0]},${posicionFinal[1]}${orientacionFinal}</p>`;
 });

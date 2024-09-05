@@ -42,37 +42,44 @@ export function girarAuto(direccion, orientacion_inicial){
     return nuevaOrientacion;
 }
 
-export function manejarAuto(direccion, orientacion_inicial, posicion_inicial){
+export function manejarAuto(direccion, orientacion_inicial, posicion_inicial, limites){
     let Posicion = [...posicion_inicial];
     let orientacion = girarAuto(direccion, orientacion_inicial);
 
     if (direccion === 'A') {
+        let posiblePosicion = [...Posicion];
         switch (orientacion) {
             case 'N':
-                Posicion[1] += 1; // Mover al norte incrementa Y
+                posiblePosicion[1] += 1; // Mover al norte incrementa Y
                 break;
             case 'E':
-                Posicion[0] += 1; // Mover al este incrementa X
+                posiblePosicion[0] += 1; // Mover al este incrementa X
                 break;
             case 'S':
-                Posicion[1] -= 1; // Mover al sur decrementa Y
+                posiblePosicion[1] -= 1; // Mover al sur decrementa Y
                 break;
             case 'O':
-                Posicion[0] -= 1; // Mover al oeste decrementa X
+                posiblePosicion[0] -= 1; // Mover al oeste decrementa X
                 break;
+        }
+        // Verificar que la posición está dentro de los límites
+        if (posiblePosicion[0] >= 0 && posiblePosicion[0] <= limites[0] && posiblePosicion[1] >= 0 && posiblePosicion[1] <= limites[1]) {
+            Posicion = posiblePosicion;
         }
     }
     return { Posicion, orientacion }; // Retorna la posición y la nueva orientación
 }
 
-export function manejarAutoxComandos(comandos, orientacion_inicial, posicion_inicial){ //IAIAIAIAA
-    let Posicion = posicion_inicial.slice() //
+
+export function manejarAutoxComandos(comandos, orientacion_inicial, posicion_inicial, limites){
+    let Posicion = posicion_inicial.slice() // Copia de la posición inicial
     let orientacion = orientacion_inicial;
 
     for(let i = 0; i < comandos.length; i++){
-        let resultado = manejarAuto(comandos[i], orientacion, Posicion);
+        let resultado = manejarAuto(comandos[i], orientacion, Posicion, limites);
         Posicion = resultado.Posicion;
         orientacion = resultado.orientacion;
     }
     return { Posicion, orientacion }; // Retorna la posición y orientación final
 }
+

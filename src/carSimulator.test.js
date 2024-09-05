@@ -1,6 +1,7 @@
 import { obtenerPosicionInicial, obtenerOrientacion, manejarAuto, girarAuto, manejarAutoxComandos } from "./carSimulator.js";
 
 describe("Simulador de Carrito", () => {
+  const limites = [5, 5];
   // Mostrar Posición Inicial
   it("Muestra posición inicial para 0x y 0y", () => {
     const resultado = [0, 0];
@@ -64,22 +65,22 @@ describe("Simulador de Carrito", () => {
   // Manejar el auto hacia el Este 
   it("Maneja el auto hacia adelante al Este", () => {
     const resultado = { Posicion: [2, 1], orientacion: "E" };
-    expect(manejarAuto("A", "E", [1, 1])).toEqual(resultado);
+    expect(manejarAuto("A", "E", [1, 1], limites)).toEqual(resultado);
   });
   // Maneja el auto hacia el Norte
   it("Maneja el auto hacia adelante", () => {
     const resultado = { Posicion: [1, 2], orientacion: "N" };
-    expect(manejarAuto("A", "N", [1, 1])).toEqual(resultado);
+    expect(manejarAuto("A", "N", [1, 1], limites)).toEqual(resultado);
   });
   // Manejar el auto hacia el Oeste 
   it("Maneja el auto hacia adelante al Oeste", () => {
     const resultado = { Posicion: [0, 1], orientacion: "O" };
-    expect(manejarAuto("A", "O", [1, 1])).toEqual(resultado);
+    expect(manejarAuto("A", "O", [1, 1], limites)).toEqual(resultado);
   });
   // Manejar el auto hacia el Sur
   it("Maneja el auto hacia adelante al Sur", () => {
     const resultado = { Posicion: [1, 0], orientacion: "S" };
-    expect(manejarAuto("A", "S", [1, 1])).toEqual(resultado);
+    expect(manejarAuto("A", "S", [1, 1], limites)).toEqual(resultado);
   });
 
 
@@ -87,13 +88,16 @@ describe("Simulador de Carrito", () => {
    it("Maneja el auto con Comandos del Ejemplo 1", () => {
     const comandos = "IAIAIAIAA";
     const resultado = { Posicion: [1, 3], orientacion: "N" };
-    expect(manejarAutoxComandos(comandos, "N",[1,2])).toEqual(resultado);
+    expect(manejarAutoxComandos(comandos, "N",[1,2], limites)).toEqual(resultado);
   });
-
    // Controlar al auto por comandos EJ 2
    it("Maneja el auto con Comandos del Ejemplo 2", () => {
     const comandos = "AADAADADDA";
     const resultado = { Posicion: [5, 1], orientacion: "E" };
-    expect(manejarAutoxComandos(comandos, "E",[3,3])).toEqual(resultado);
+    expect(manejarAutoxComandos(comandos, "E",[3,3], limites)).toEqual(resultado);
   });
+  // Controlar al auto por comandos EJ 3
+  const comandos = "AIADAIA";
+  const resultado = { Posicion: [0, 0], orientacion: "S" };
+  expect(manejarAutoxComandos(comandos, "O",[2,1], [6, 6])).toEqual(resultado);
 });
